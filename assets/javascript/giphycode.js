@@ -30,6 +30,9 @@
 
         $(".button-panel-body").append(newButton);
 
+        //clear input box
+        $("#reaction-input").val("");
+
         //console.log(newButton)
 
     }); //on click submit button function()
