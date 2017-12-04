@@ -2,196 +2,65 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>GIPHTastic: Reactions</title>
-
-  <!-- Added a link to Bootstrap-->
+    <meta charset="utf-8">
+    <title>GIPHTastic: Reactions</title>
+    <!-- Added a link to Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  
-    <link rel ="stylesheet" type="text/css" href ="./assets/css/style.css" />
-
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
     <!-- Added link to the jQuery Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
 </head>
 
-
-
-
 <body>
-
-  <!-- Jumbotron for Title -->
-  <div class="jumbotron">
-    <div id="my-title">
-      <h1 class="text-center" id="my-title1">Gimme GIPHY!</h1>
-      <h2 class="text-center" id="my-title2">(Human reactions)</h2>
+    <!-- Jumbotron for Title -->
+    <div class="jumbotron">
+        <div id="my-title">
+            <h1 class="text-center" id="my-title1">Gimme GIPHY!</h1>
+            <h2 class="text-center" id="my-title2">(Human reactions)</h2>
+        </div>
     </div>
-  </div>
-
-  <!--Main Container-->
-  <div class="container" id="main-container" col-sm-12>
-
-    <div id="reaction-selection-div" class="row" class="text-center" col-sm-12>
-      <!-- Reaction Select Box -->
-        <form id="reaction-form">
-          <!-- Label for Text Box -->
-          <label id="inputbox-label" for="reaction-input">Add a reaction</label>
-          <!-- Text Input Box -->
-          <input type="text" id="reaction-input">
-          <!-- Submit Button -->
-          <input id="submit-reaction" type="submit" value=" Submit ">
-        </form>
+    <!--Main Container-->
+    <div class="container" id="main-container" col-sm-12>
+        <div id="reaction-selection-div" class="row" class="text-center" col-sm-12>
+            <!-- Reaction Select Box -->
+            <form id="reaction-form">
+                <!-- Label for Text Box -->
+                <label id="inputbox-label" for="reaction-input">Add a reaction</label>
+                <!-- Text Input Box -->
+                <input type="text" id="reaction-input">
+                <!-- Submit Button -->
+                <input id="submit-reaction" type="submit" value=" Submit ">
+            </form>
+        </div>
+        <!-- Reaction Information -->
+        <div class="container" id="reaction-button-container" col-sm-12>
+            <div class="panel panel-default">
+                <div class="button-panel-heading">Click on a button to see gifs of the reaction:</div>
+                <div class="button-panel-body">
+                    <button data-reaction="Hello" class="display-button" col-sm-2>Hello!</button>
+                    <button data-reaction="Angry" class="display-button" col-sm-2>Angry</button>
+                    <button data-reaction="Happy" class="display-button" col-sm-2>Happy</button>
+                </div>
+                <!-- panel body-->
+            </div>
+            <!-- panel -->
+        </div>
+        <!-- reaction button container -->
+        <div class="container" id="gifs-container" col-sm-12>
+            <div class="panel panel-default">
+                <div class="gifs-panel-heading">Gif's:</div>
+                <div class="gifs-panel-body" id="gifs-appear-here"></div>
+                <!-- panel body-->
+            </div>
+            <!-- panel -->
+        </div>
+        <!-- gif container -->
     </div>
-
-  <!-- Reaction Information -->
-  <div class="container" id="reaction-button-container"  col-sm-12>
-
-      <div class="panel panel-default">
-        <div class="button-panel-heading">Click on a button to see gifs of the reaction:</div>
-        <div class="button-panel-body">
-          <button data-reaction="Hello" class="display-button" col-sm-2>Hello!</button>   
-          <button data-reaction="Angry" class="display-button" col-sm-2>Angry</button>
-          <button data-reaction="Happy" class="display-button" col-sm-2>Happy</button>   
-          <button data-reaction="Afraid" class="display-button" col-sm-2>Afraid</button>
-          <button data-reaction="Surprise" class="display-button" col-sm-2>Surprise</button>   
-          <button data-reaction="Confused" class="display-button" col-sm-2>Confused</button>
-          <button data-reaction="Deal with it" class="display-button" col-sm-2>Deal with it!</button>   
-          <button data-reaction="Goodbye" class="display-button" col-sm-2>Goodbye!</button>
-
-          <button data-reaction="Angry" class="display-button" col-sm-2>Angry</button>
-          <button data-reaction="Happy" class="display-button" col-sm-2>Happy</button>   
-          <button data-reaction="Afraid" class="display-button" col-sm-2>Afraid</button>
-        </div>  <!-- panel body-->
-      </div>  <!-- panel -->
-    </div>  <!-- reaction button container -->
-
-    <div class="container" id="gifs-container"  col-sm-12>    
-      <div class="panel panel-default">
-        <div class="gifs-panel-heading">Gif's:</div>    
-          <div class="gifs-panel-body" id="gifs-appear-here"></div>  <!-- panel body-->    
-      </div>  <!-- panel -->
-    </div>  <!-- gif container -->
-
-  </div> <!-- container -->
-
-</div> <!-- Main container -->
-
-
-  <script type="text/javascript">
-    //Create an array of strings to hold reactions
-    var reactionArray = [];
-    var reactionStillsArrayURL = [];
-    var reactionsGifArrayURL = [];
-    // Creating a reaction image var to be used in displays
-    var reactionImage; 
-
-
-    // Event handler for user clicking the submit reaction button
-    $("#submit-reaction").on("click", function(event) {
-      // Preventing the button from trying to submit the form
-      event.preventDefault();
-      // Storing the reaction name
-      var inputReaction = $("#reaction-input").val().trim();
-      reactionArray.push(inputReaction);
-
-      //Creating a new button for the reaction
-      var newButton = $("<button>");
-      newButton.addClass("display-button");
-      // Adding a data-attribute with a value of the reaction
-      newButton.attr("data-name", inputReaction);
-      // Providing the button's text with a value of the reaction
-      newButton.text(inputReaction);
-      // Adding the button to the HTML
-      $("button-panel-body").append(newButton);
-    });  //on click function()
-
-
-
-
-
-    // Adding click event listen listener to all buttons
-    $(document).ready(function(){
-      $("button").on("click", function() {
-      
-        // Grabbing and storing the data-reaction property value from the button
-        var reaction = $(this).attr("data-reaction");
-
-        // Constructing a queryURL using the animal name
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-          reaction + "&api_key=dc6zaTOxFJmzC&limit=10";
-
-        // Performing an AJAX request with the queryURL
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-          })
-          // After data comes back from the request
-          .done(function(response) {
-            console.log(queryURL);
-
-            console.log(response);
-            // storing the data from the AJAX request in the results variable
-            var results = response.data;
-            var gifscountlimiter = (results.length > 10)? 10: results.length;
-
-            // Looping through each result item up to 10 gif's per the assignment
-            for (var i = 0; i < gifscountlimiter; i++) {
-
-              reactionStillsArrayURL[i] = results[i].images.fixed_height_still.url;
-              reactionsGifArrayURL[i] = results[i].images.fixed_height.url;
-
-              // Creating and storing a div tag
-              var reactionDiv = $("<div class='.gif-div'>");
-
-              // Creating a paragraph tag with the result item's rating
-              var p = $("<p>").text(reaction + " Gif #" + (gifscountlimiter-i) + ";  Rating: " + results[i].rating.toUpperCase());
-
-              // Creating and storing an image tag
-              // var reactionImage = $("<img 'class=gif-image'>");
-              // // Setting the src attribute of the image to a property pulled off the result item
-              // reactionImage.attr("src", results[i].images.fixed_height.url);
-              
-              // Creating and storing an image tag
-              var reactionImage = $("<img class='gif-image'>");              
-
-              // Setting the src attribute of the image to a property pulled off the result item
-              reactionImage.attr("src", results[i].images.fixed_height_still.url);
-              reactionImage.attr("data-still", results[i].images.fixed_height_still.url);
-              reactionImage.attr("data-animate", results[i].images.fixed_height.url);
-              reactionImage.attr("data-state","still");
+    <!-- container -->
+    </div>
   
+  <script type="text/javascript" src="./assets/javascript/giphycode.js"></script>
 
-              // Appending the paragraph and image tag to the animalDiv
-              reactionDiv.append(reactionImage);
-              reactionDiv.append(p);
-
-              // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
-              $("#gifs-appear-here").prepend(reactionDiv);
-            }  //for
-          });  //.done function()
-      });  //on click function()
-    }); //document ready
-
-    //$(document).ready(function(){
-      $("gif-image").on("click", function() {
-        
-        var state = $(this).attr("data-state");
-        // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-        // Then, set the image's data-state to animate
-        // Else set src to the data-still value
-        if (state === "still") {
-          $(this).attr("src", $(this).attr("data-animate"));
-          $(this).attr("data-state", "animate");
-        } else {
-          $(this).attr("src", $(this).attr("data-still"));
-          $(this).attr("data-state", "still");
-        }
-      });  //on click function()
-    //});  //document.ready function()
-      
-
-  </script>
 </body>
 
 </html>

@@ -1,4 +1,3 @@
-
 body {
     /*background-image: url('../images/background.jpg');*/
     background-color: black;
@@ -10,7 +9,7 @@ body {
 
 
 .jumbotron {
-	height: 125px;
+    height: 125px;
     background-image: url(../images/jumbotronbackground.jpg);
     margin-top: 0px;
     color: white;
@@ -21,8 +20,8 @@ body {
     margin-top: 25px;
 }
 
-#main-container{
-	height: 100%;
+#main-container {
+    height: 100%;
 }
 
 #my-title {
@@ -48,56 +47,56 @@ label {
 }
 
 #reaction-selection-div {
-	height: 8em;
-	display: flex;
-    justify-content:center; 
+    height: 8em;
+    display: flex;
+    justify-content: center;
     margin-top: -40px;
 }
 
 #reaction-input {
-	font-weight: bold;
-	color: red;
-	font-size: 20px;
-	height: 2em;
+    font-weight: bold;
+    color: red;
+    font-size: 20px;
+    height: 2em;
     width: 50%;
     border-radius: 3px;
     border: 1px solid transparent;
     border-top: none;
     border-bottom: 1px solid #DDD;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
 }
 
-#select-reaction{
-	color: white ;
-	background-color: darkgray ;
-	border-top: 1px solid #c0ffff ;
-	border-right: 1px solid #00f ;
-	border-bottom: 1px solid #00f ;
-	border-left: 1px solid #c0ffff ;
-	border-radius: 3px;
-	height: 2em;
+#select-reaction {
+    color: white;
+    background-color: darkgray;
+    border-top: 1px solid #c0ffff;
+    border-right: 1px solid #00f;
+    border-bottom: 1px solid #00f;
+    border-left: 1px solid #c0ffff;
+    border-radius: 3px;
+    height: 2em;
 }
 
 #reaction-form {
-	display: block;
-	align-content: center;
-	margin-top: 3em;
-	margin-bottom: 3em;
+    display: block;
+    align-content: center;
+    margin-top: 3em;
+    margin-bottom: 3em;
 }
 
 #reaction-button-container {
-	font-size: 16px;
+    font-size: 16px;
     display: flex;
-    justify-content:space-around; 
+    justify-content: space-around;
     border-color: white;
     border-width: 2px;
     height: 100%;
     width: 80%;
     margin-top: 5px;
     margin-top: -40px;
-} 
+}
 
-.display-button{
+.display-button {
     font-size: 18px;
     display: inline-block;
     width: 150px;
@@ -108,75 +107,58 @@ label {
     font-weight: bold;
 }
 
-.button-panel-heading{
-	background-color: darkgray;
-	font-weight: bold;
-	font-size: 20px;
-	color: white;
+.button-panel-heading {
+    background-color: darkgray;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
 }
 
-.button-panel-body{
-	padding: 15px;
+.button-panel-body {
+    padding: 15px;
     margin-top: 0px;
 }
 
-.gifs-container{
-	font-size: 16px;
+.gifs-container {
+    font-size: 16px;
     display: flex;
-    justify-content:space-around; 
+    justify-content: space-around;
     border-color: white;
     border-width: 2px;
     height: 100%;
     width: 80%;
     margin-top: 5px;
-    margin-top: -40px;	
+    margin-top: -40px;
 }
 
 
-.gifs-panel-heading{
-	background-color: darkgray;
-	font-weight: bold;
-	font-size: 20px;
-	color: white;	
+.gifs-panel-heading {
+    background-color: darkgray;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
 }
 
-.gifs-panel-body{
-	padding: 15px;
+.gifs-panel-body {
+    padding: 15px;
     margin-top: 0px;
 }
 
-.gif-div{
-	col-sm-2;
-	/*width: 400px;*/
-	display: inline;
-	/*display: inline-block;*/
-	/*float: left;*/	
-}
-
-.gif-image{
-	height: 15em;
-	max-width: 100%;
+.gif-div {
+    display: inline-block;
 
 }
 
-
-
-
-.img-1 {
-	size: 150em 150em;
-	border: 2px solid black;
-}
-
-#imagepanel {
-	align-items: center;
-	display: flex;
-    justify-content:space-around; 
+.gif-image {
+    height: 15em;
+    max-width: 100%;
 }
 
 h1 {
-	margin-top: -15px;
+    margin-top: -15px;
 }
+
 h2 {
-	font-weight: bold;
-	font-size: 40px;
+    font-weight: bold;
+    font-size: 40px;
 }
